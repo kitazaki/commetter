@@ -1,0 +1,26 @@
+{
+  "name": "MQTTWidget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd src&&npm install",
+    "start": "electron ./src",
+    "build-macOS": "electron-packager ./src MQTTWidget --platform=darwin --arch=x64 --overwrite",
+    "build-windows": "electron-packager ./src MQTTWidget --platform=win32 --arch=x64 --overwrite",
+    "build-linux": "electron-packager ./src MQTTWidget --platform=linux --arch=x64 --overwrite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^4.2.12",
+    "electron-packager": "^12.2.0",
+    "ws": "^6.2.1"
+  },
+  "dependencies": {
+    "electron-winstaller": "^2.7.0",
+    "jquery": "^3.4.1",
+    "mqtt": "^3.0.0"
+  }
+}
