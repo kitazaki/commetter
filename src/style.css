@@ -1,0 +1,52 @@
+#comets {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 99999999999999999;
+  pointer-events: none;
+  font-size: 100px;
+  color: #fff;
+  text-shadow: 1px 2px 0 #000, 1px -2px 0 #000, -1px 2px 0 #000,
+    -1px -2px 0 #000, 2px 1px 0 #000, 2px -1px 0 #000, -2px 1px 0 #000,
+    -2px -1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    -1px -1px 0 #000;
+  text-align: left;
+  overflow: hidden;
+}
+#comets .status {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  font-size: 15px;
+}
+#comets .comment {
+  position: absolute;
+  left: 100%;
+  width: 100%;
+  margin: 0;
+  animation-name: textanime;
+  animation-duration: 15s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@-webkit-keyframes textanime {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -300%;
+  }
+}
+@keyframes textanime {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -300%;
+  }
+}
