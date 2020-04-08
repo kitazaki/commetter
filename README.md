@@ -16,4 +16,6 @@ niconicocoaは現在、バックエンドにFirebaseを使用した<a href="http
 
 commetterはMilkcocoaから汎用MQTTに対応(shiftr.ioで動作確認)し、ブックマークレット方式を止めてElectron実装アプリ(ブラウザ内に閉じず、ウィンドウ全体にコメントを表示)に変更しました。
 
+<img src="commetter.png" width="50%">
+
 commetter is MQTT and Electron implementation of niconicocoa, because Milkcocoa service was shutdown on 30 Oct, 2019.
