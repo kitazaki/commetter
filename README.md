@@ -123,6 +123,6 @@ transparent: true,				# 透過表示しない場合、falseに変更します
 resizable: true,				# フレームサイズを変更しない場合、falseに変更します
 alwaysOnTop: true				# 画面を常にトップに表示しない場合、falseに変更します
 window.setIgnoreMouseEvents(true);		# マウス操作を有効にする場合、falseに変更します
-//  window.openDevTools();			# デバック目的でブラウザの開発ツールを表示する場合、コメントイン(//を削除)します
+//  window.openDevTools();			# デバッグ目的でブラウザの開発ツールを表示する場合、コメントイン(//を削除)します
 ```
 
