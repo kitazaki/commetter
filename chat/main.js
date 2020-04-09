@@ -1,10 +1,15 @@
-var client = mqtt.connect('wss://try:try@broker.shiftr.io', {
-  clientId: 'javascript'
+var id = "try";
+var password = "try";
+var topic = "/example";
+var time = new Date().getTime().toString(16);
+
+var client = mqtt.connect('wss://'+id+':'+password+'@broker.shiftr.io', {
+  clientId: 'javascript_'+time
 });
 
 client.on('connect', function(){
     console.log('client has connected!');
-    client.subscribe('/example');
+    client.subscribe(topic);
 });
 
 var nameArea, textArea, board;
@@ -28,7 +33,7 @@ function clickEvent(){
  
 function sendText(text){
   setTimeout(function(){
-    client.publish('/example', text);
+    client.publish(topic, text);
     console.log("送信完了!");
     textArea.value = "";
   }, 1000);
