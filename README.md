@@ -67,11 +67,11 @@ MQTTWidget-darwin-x64/MQTTWidget.app
 $ tree commetter
 commetter
 ├── README.md					# このREADME.mdファイル
-├── chat						# ウェブページからMQTTへ書き込む(publish)するサンプル
+├── chat					# ウェブページからMQTTへ書き込む(publish)するサンプル
 │   ├── index.html
 │   └── main.js					# MQTT接続情報を変更する
 ├── MQTTWidget-darwin-x64
-│   └── MQTTWidget.app			# 実行モジュール
+│   └── MQTTWidget.app				# 実行モジュール
 ├── package-lock.json
 ├── package.json
 └── src
@@ -88,8 +88,8 @@ src/script.js
 
 ```javascript
 var id = "try";					# MQTT接続ID
-var password = "try";			# MQTT接続パスワード
-var topic = "/example";			# MQTT接続トピック
+var password = "try";				# MQTT接続パスワード
+var topic = "/example";				# MQTT接続トピック
 
 # MQTTサーバ(shiftr.io以外を使用する場合、broker.shiftr.io部分を変更する)
 var client = mqtt.connect('wss://'+id+':'+password+'@broker.shiftr.io', {
@@ -123,6 +123,6 @@ transparent: true,				# 透過表示しない場合、falseに変更します
 resizable: true,				# フレームサイズを変更しない場合、falseに変更します
 alwaysOnTop: true				# 画面を常にトップに表示しない場合、falseに変更します
 window.setIgnoreMouseEvents(true);		# マウス操作を有効にする場合、falseに変更します
-//  window.openDevTools();		# デバック目的でブラウザの開発ツールを表示する場合、コメントイン(//を削除)します
+//  window.openDevTools();			# デバック目的でブラウザの開発ツールを表示する場合、コメントイン(//を削除)します
 ```
 
