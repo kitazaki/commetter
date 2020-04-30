@@ -14,15 +14,15 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^4.2.12",
-    "electron-packager": "^12.2.0",
+    "electron": "^8.2.4",
+    "electron-packager": "^14.2.1",
     "ws": "^6.2.1"
   },
   "dependencies": {
-    "electron-winstaller": "^2.7.0",
-    "jquery": "^3.4.1",
-    "mqtt": "^3.0.0",
+    "electron-winstaller": "^4.0.0",
+    "jquery": ">=3.5.0",
     "lodash.template": ">=4.5.0",
-    "minimist": ">=1.2.3"
+    "minimist": ">=1.2.3",
+    "mqtt": "^3.0.0"
   }
 }
