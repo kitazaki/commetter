@@ -21,6 +21,13 @@ commetterはMilkcocoaから汎用MQTTに対応(shiftr.ioで動作確認)し、�
 
 <img src="commetter.png" width="50%">
 
+※ 2020年5月5日追記  
+2020年4月18日に開催された<a href="https://protoout.connpass.com/event/172136/">ProtoOutハッカソン</a>で<a href="https://protopedia.net/prototype/a07c2f3b3b907aaf8436a26c6d77f0a2">ねこしぇるじゅ</a>というサービスを作りました。  
+文字のほかに画像・動画を流す機能(ネコ動)と音声を再生する機能(ネコ声)を追加しました。  
+また、文字列の読み上げ機能(Web Speech API)に対応しました。
+
+<a href="https://youtu.be/k8FHGCGBDbU"><img src="nekodou.png" width="50%"></a>
+
 commetter is MQTT and Electron implementation of niconicocoa, because Milkcocoa service was shutdown on 30 Oct, 2019.
 
 ## インストール (Install)
@@ -126,3 +133,64 @@ window.setIgnoreMouseEvents(true);		# マウス操作を有効にする場合、
 //  window.openDevTools();			# デバッグ目的でブラウザの開発ツールを表示する場合、コメントイン(//を削除)します
 ```
 
+画像・動画を流す機能(ネコ動)と音声を再生する場合、以下のファイルを編集します。  
+src/script.js  
+
+画像を流す場合、文字列の先頭にタグ(img:)を入れることで、タグに続く文字列をimg要素のsrc属性に指定するURIとして取り扱います。  
+動画を流す場合、文字列の先頭にタグ(mp4:)を入れることで、タグに続く文字列をiframe要素のsrc属性に指定するURIとして取り扱います。  
+音声を再生する場合、文字列の先頭にタグ(mp4:)を入れることで、タグに続く文字列をiframe要素のsrc属性に指定するURIとして取り扱います。  
+文字列を読み上げる場合、文字列の先頭にタグ(say:)を入れることで、タグに続く文字列をWeb Speech API (Speech Synthesis API)のspeak()関数に渡します。
+
+```javascript
+client.on("message", function(topic, message) {
+    console.log(message.toString());
+    if (message.toString().match(/^img:/)) {
+      var i = message.toString();
+      i = i.replace(/img:/g, "");
+      var commentDom = $("<p></p>", {
+        addClass: "comment",
+        "id": num
+      }).html("<img src="+i+"></img>").css({
+        top: (Math.random() * 90) + "%"
+      });
+    } else if (message.toString().match(/^mp4:/)) {
+      var i = message.toString();
+      i = i.replace(/mp4:/g, "");
+      var commentDom = $("<p></p>", {
+        addClass: "comment",
+        "id": num
+      }).html("<iframe src="+i+" frameborder=0 allow=autoplay allowfullscreen id=iframeVideo></iframe>").css({
+        top: (Math.random() * 90) + "%"
+      });
+    } else if (message.toString().match(/^mp3:/)) {
+      var i = message.toString();
+      i = i.replace(/mp3:/g, "");
+      var commentDom = $("<p></p>", {
+        addClass: "comment",
+        "id": num
+      }).html("<iframe src="+i+" allow=autoplay style=display:none id=iframeAudio></iframe>").css({
+        top: (Math.random() * 90) + "%"
+      });
+    } else if (message.toString().match(/^say:/)) {
+      // Speak
+      var i = message.toString();
+      i = i.replace(/say:/g, "");
+      speechSynthesis.speak(
+        new SpeechSynthesisUtterance(i)
+      );
+    } else {
+      var commentDom = $("<p></p>", {
+        addClass: "comment",
+        "id": num
+      }).text(message.toString()).css({
+        top: (Math.random() * 90) + "%"
+      });
+    }
+    $("#comets").append(commentDom);
+    setTimeout(function(id) {
+      $("#comets #" + id).remove();
+    }, 10000, num);
+    num++;
+  });
+}, 1000);
+```
