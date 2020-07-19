@@ -16,6 +16,6 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "minimist": ">=1.2.3",
-    "lodash": ">=4.17.12"
+    "lodash": ">=4.17.19"
   }
 }
